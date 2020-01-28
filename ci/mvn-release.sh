@@ -11,7 +11,7 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 	mvn versions:set -DnewVersion=$NEW_VERSION --no-transfer-progress
 	mvn versions:commit --no-transfer-progress
 
-  echo "commit new release version"
+ 	echo "commit new release version"
 	git commit -a -m "Release $NEW_VERSION: set master to new release version"
 
 	echo "Update version in README.md"
@@ -23,7 +23,7 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 
 	echo "merge master back to develop"
 #	git checkout -f -b develop github/develop
-	git checkout -f -b develop origin/develop
+	git checkout develop
 	git merge master
 
 	mvn versions:set -DnewVersion=$NEXT_SNAPSHOT --no-transfer-progress
@@ -36,5 +36,4 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 #	git push github --tags
 	git push --all
 	git push --tags
-
 fi
