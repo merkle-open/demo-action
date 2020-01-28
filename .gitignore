@@ -11,6 +11,11 @@ cmake-build-*/
 
 target/
 
+#vscode
+.classpath
+.project
+.settings/
+
 ### macOS template
 # General
 .DS_Store
@@ -64,3 +69,4 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+.project
