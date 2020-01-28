@@ -5,6 +5,9 @@ on:
     branches-ignore:
       - develop
       - master
+  pull_request:
+    branches:
+      - '*'
 
 jobs:
   verify:
