@@ -23,7 +23,7 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 
 	echo "merge master back to develop"
 	git checkout -f -b develop github/develop
-	git merge master
+	git merge --allow-unrelated-histories master
 
 	mvn versions:set -DnewVersion=$NEXT_SNAPSHOT
 	mvn versions:commit
@@ -31,6 +31,8 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 	echo "commit new snapshot version"
 	git commit -a -m "Release $NEW_VERSION: set develop to next development version $NEXT_SNAPSHOT"
 
+#	git push github --all
+#	git push github --tags
 	git push github --all
 	git push github --tags
 
