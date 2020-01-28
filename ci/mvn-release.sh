@@ -23,6 +23,7 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 
 	echo "merge master back to develop"
 #	git checkout -f -b develop github/develop
+	git fetch --all
 	git checkout develop
 	git merge master
 
