@@ -8,8 +8,8 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 	NEXT_SNAPSHOT="$NEXT_VERSION-SNAPSHOT"
 	echo "perform release of $NEW_VERSION from $CURRENT_VERSION and set next develop version $NEXT_SNAPSHOT"
 
-	mvn versions:set -DnewVersion=$NEW_VERSION
-	mvn versions:commit
+	mvn versions:set -DnewVersion=$NEW_VERSION --no-transfer-progress
+	mvn versions:commit --no-transfer-progress
 
   echo "commit new release version"
 	git commit -a -m "Release $NEW_VERSION: set master to new release version"
@@ -22,18 +22,19 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 	git tag -a $NEW_VERSION -m "Release $NEW_VERSION: tag release"
 
 	echo "merge master back to develop"
-	git checkout -f -b develop github/develop
-	git merge --allow-unrelated-histories master
+#	git checkout -f -b develop github/develop
+	git checkout -f -b develop origin/develop
+	git merge master
 
-	mvn versions:set -DnewVersion=$NEXT_SNAPSHOT
-	mvn versions:commit
+	mvn versions:set -DnewVersion=$NEXT_SNAPSHOT --no-transfer-progress
+	mvn versions:commit --no-transfer-progress
 
 	echo "commit new snapshot version"
 	git commit -a -m "Release $NEW_VERSION: set develop to next development version $NEXT_SNAPSHOT"
 
 #	git push github --all
 #	git push github --tags
-	git push github --all
-	git push github --tags
+	git push --all
+	git push --tags
 
 fi
