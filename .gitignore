@@ -1,7 +1,7 @@
 # IntellJ
 .idea
 out/
-.iml
+*.iml
 
 # CMake
 cmake-build-*/
