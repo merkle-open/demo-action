@@ -1,14 +1,12 @@
-name: deploy
+name: deploy snapshot
 
 on:
   push:
     branches:
       - develop
-    tags:
-      - '*'
 
 jobs:
-  deploy:
+  deploy-snapshot:
 
     runs-on: ubuntu-latest
 
@@ -34,4 +32,3 @@ jobs:
           echo "Password: $PASSWORD"
           chmod +x ci/print.sh
           ci/print.sh
-
