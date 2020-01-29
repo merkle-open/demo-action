@@ -33,7 +33,7 @@ jobs:
           chmod +x ci/mvn-release.sh
           ci/mvn-release.sh
 
-  deploy:
+  deploy-release:
     
     needs: release
     runs-on: ubuntu-latest

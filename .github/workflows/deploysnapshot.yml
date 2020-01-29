@@ -1,4 +1,4 @@
-name: deploy
+name: deploy snapshot
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  deploy:
+  deploy-snapshot:
 
     runs-on: ubuntu-latest
 
