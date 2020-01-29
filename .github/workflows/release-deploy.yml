@@ -24,8 +24,6 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install libxml2-utils
       - name: Set up Git
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           chmod +x ci/setup-git.sh
           ci/setup-git.sh
