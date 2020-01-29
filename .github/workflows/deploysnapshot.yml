@@ -19,6 +19,16 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+      - name: SetOutput
+        run: |
+          chmod +x ci/output.sh
+          ci/output.sh
+      - name: PrintOutput
+        env:
+          TAG: ${{ steps.SetOutput.outputs.latest_tag }}
+        run: |
+          chmod +x ci/showoutput.sh
+          ci/showoutput.sh  
       # Run maven verify
       - name: Maven verify
         run: mvn verify --batch-mode
