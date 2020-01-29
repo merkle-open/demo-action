@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - develop
-    tags:
-      - '*'
 
 jobs:
   deploy:
@@ -34,4 +32,3 @@ jobs:
           echo "Password: $PASSWORD"
           chmod +x ci/print.sh
           ci/print.sh
-
