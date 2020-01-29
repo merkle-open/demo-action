@@ -6,6 +6,10 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 	NEW_VERSION=${CURRENT_VERSION%'-SNAPSHOT'}
 	NEXT_VERSION=`bash ci/semver.sh -p $NEW_VERSION`
 	NEXT_SNAPSHOT="$NEXT_VERSION-SNAPSHOT"
+
+	git fetch --all
+	git checkout master
+
 	echo "perform release of $NEW_VERSION from $CURRENT_VERSION and set next develop version $NEXT_SNAPSHOT"
 
 	mvn versions:set -DnewVersion=$NEW_VERSION --no-transfer-progress
@@ -36,5 +40,4 @@ if [[ $CURRENT_VERSION == *-SNAPSHOT ]]; then
 	git commit -a -m "Release $NEW_VERSION: set develop to next development version $NEXT_SNAPSHOT"
 
 	git push --all
-	git push --tags
 fi
